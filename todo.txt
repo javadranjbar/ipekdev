@@ -1,0 +1,9 @@
+- create project folder - done
+- download html5boilerplate https://html5boilerplate.com - done
+- extract everything into my project root - done
+
+- initialize npm inside project - done
+- add https://tailwindcss.com support to project - done
+
+- scaffold project structure - done
+- decide on a color palette
