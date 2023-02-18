@@ -1,7 +1,24 @@
+const options = require("./config"); //options from config.js
+
+const allPlugins = {
+  typography: require("@tailwindcss/typography"),
+  forms: require("@tailwindcss/forms"),
+  lineClamp: require("@tailwindcss/line-clamp"),
+  containerQueries: require("@tailwindcss/container-queries"),
+};
+
+const plugins = Object.keys(allPlugins)
+  .filter((k) => options.plugins[k])
+  .map((k) => {
+    if (k in options.plugins && options.plugins[k]) {
+      return allPlugins[k];
+    }
+  });
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./**/*.{html,js}"],
   darkMode: "class",
+  content: ["./src/**/*.{html,js,php}"],
   theme: {
     extend: {
       colors: {
@@ -25,7 +42,7 @@ module.exports = {
           "via-dark": "#5485f8",
           "to-dark": "#5954f8"
         }
-      }
+      },
     },
     container: {
       center: true,
@@ -35,5 +52,5 @@ module.exports = {
       'heading': ['dana', '"sans-serif"']
     }
   },
-  plugins: [],
-}
+  plugins: plugins,
+};
